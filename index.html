@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roaa Elsayed — Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFAF7;
+    --paper-raise: #F1EFE9;
+    --ink: #1B2430;
+    --ink-soft: #5B6472;
+    --line: #DAD6CC;
+    --accent: #2C5F8A;
+    --accent-soft: #E7EEF3;
+    --amber: #C77D2E;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #14181F;
+      --paper-raise: #1C222C;
+      --ink: #E9E7E0;
+      --ink-soft: #9AA2AF;
+      --line: #2E3440;
+      --accent: #7EB0DA;
+      --accent-soft: #1F2E3A;
+      --amber: #E0A15C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14181F;
+    --paper-raise: #1C222C;
+    --ink: #E9E7E0;
+    --ink-soft: #9AA2AF;
+    --line: #2E3440;
+    --accent: #7EB0DA;
+    --accent-soft: #1F2E3A;
+    --amber: #E0A15C;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+  a:hover { color: var(--amber); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 72px 28px 100px;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 48px 20px 72px; }
+  }
+
+  header.hero {
+    margin-bottom: 64px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    margin: 0 0 14px;
+  }
+
+  h1.name {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: clamp(40px, 7vw, 60px);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+
+  .tagline {
+    font-size: 19px;
+    max-width: 52ch;
+    color: var(--ink);
+    margin: 0 0 32px;
+  }
+
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .stat-chip {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 7px 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink-soft);
+    background: var(--paper-raise);
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 15px;
+  }
+
+  .contact-row a { font-weight: 500; }
+
+  section {
+    margin-bottom: 56px;
+  }
+
+  h2.section-title {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-transform: none;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+    margin: 0 0 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .project {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .project:last-child { border-bottom: none; }
+
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .project-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 21px;
+    margin: 0;
+  }
+
+  .project-context {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .project-desc {
+    margin: 0 0 12px;
+    color: var(--ink);
+    max-width: 62ch;
+  }
+
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .stack-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    color: var(--ink-soft);
+  }
+
+  .project-link {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .skill-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  @media (max-width: 560px) {
+    .skill-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  .skill-label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+
+  .skill-value {
+    color: var(--ink);
+  }
+
+  .exp-item {
+    margin-bottom: 18px;
+  }
+
+  .exp-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-weight: 500;
+  }
+
+  .exp-date {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .exp-detail {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 4px 0 0;
+  }
+
+  footer {
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer a { color: var(--ink-soft); }
+  footer a:hover { color: var(--amber); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Computer Science — New Jersey Institute of Technology — Class of 2027</p>
+    <h1 class="name">Roaa Elsayed</h1>
+    <p class="tagline">I build full-stack products end to end, train and evaluate machine learning models, and wire up AI agents that actually hold together under testing.</p>
+    <div class="stat-row">
+      <span class="stat-chip">5 shipped projects</span>
+      <span class="stat-chip">5-agent AI pipeline</span>
+      <span class="stat-chip">Multi-million-row ML pipeline</span>
+      <span class="stat-chip">Deployed on AWS + GitHub Pages</span>
+    </div>
+    <div class="contact-row">
+      <a href="mailto:relsayed2005@gmail.com">relsayed2005@gmail.com</a>
+      <a href="https://linkedin.com/in/roaa-elsayed-b10228284" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <section aria-labelledby="projects-title">
+    <h2 class="section-title" id="projects-title">projects</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="project-name">ATS for Job Seekers</h3>
+        <span class="project-context">Guided Design in Software Engineering — Team Project</span>
+      </div>
+      <p class="project-desc">A full-stack job-application tracker. I built the frontend and worked inside a real Agile workflow: one branch per ticket, mandatory PR review, and CI checks required before anything merged.</p>
+      <div class="stack-row">
+        <span class="stack-tag">Next.js</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Express</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">OpenAI GPT-4</span>
+      </div>
+      <a class="project-link" href="https://github.com/oms2304/ATS" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="project-name">AI Spec-to-Jira Tool</h3>
+        <span class="project-context">AI-Assisted Software Engineering</span>
+      </div>
+      <p class="project-desc">Turns uploaded specification documents into AI-generated Jira issues. I built the React frontend and wrote the integration tests that validate the API contract against a backend deployed on AWS Lambda and API Gateway, run in CI on every push.</p>
+      <div class="stack-row">
+        <span class="stack-tag">React</span><span class="stack-tag">AWS Lambda</span><span class="stack-tag">API Gateway</span><span class="stack-tag">GitHub Actions</span>
+      </div>
+      <a class="project-link" href="https://github.com/yousseam/AI-Jira-Board" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="project-name">Agentic Stock Trader</h3>
+        <span class="project-context">Introduction to Data Science — Team Project</span>
+      </div>
+      <p class="project-desc">A 5-agent LLM pipeline that reads real stock news and decides buy, sell, or hold — with a confidence loop that re-runs itself when it isn't sure. I owned testing: validating each agent's output on its own before trusting it in the full pipeline.</p>
+      <div class="stack-row">
+        <span class="stack-tag">Python</span><span class="stack-tag">Google Gemini API</span><span class="stack-tag">Alpaca API</span><span class="stack-tag">Multi-Agent Systems</span>
+      </div>
+      <a class="project-link" href="https://github.com/merkusvictory/agentic-stock-trader" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="project-name">American Express Default Prediction</h3>
+        <span class="project-context">Introduction to Machine Learning — Individual Project</span>
+      </div>
+      <p class="project-desc">An end-to-end ML pipeline on a multi-million-row financial dataset: feature engineering across each customer's statement history, then training and comparing Logistic Regression, Random Forest, and XGBoost to predict default risk.</p>
+      <div class="stack-row">
+        <span class="stack-tag">Python</span><span class="stack-tag">Pandas</span><span class="stack-tag">scikit-learn</span><span class="stack-tag">XGBoost</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3 class="project-name">Hiring Website — MADO Logistics</h3>
+        <span class="project-context">Independent Project</span>
+      </div>
+      <p class="project-desc">A two-page hiring site built from plain HTML, CSS, and JavaScript with no frameworks — a landing page plus an application form with dynamic toggles and resume upload. Deployed independently via GitHub Pages using the GitHub CLI, with a Google Sheets backend and Apps Script email notifications on new applications.</p>
+      <div class="stack-row">
+        <span class="stack-tag">HTML/CSS/JS</span><span class="stack-tag">GitHub Pages</span><span class="stack-tag">Google Apps Script</span>
+      </div>
+      <a class="project-link" href="https://relsayed80672005.github.io/mado-logistics-site/" target="_blank" rel="noopener">View live site →</a>
+    </div>
+
+  </section>
+
+  <section aria-labelledby="skills-title">
+    <h2 class="section-title" id="skills-title">skills</h2>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <span class="skill-value">JavaScript, TypeScript, Python, SQL, Java (coursework)</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Frontend</span>
+        <span class="skill-value">React, Next.js, responsive & accessible UI</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Backend & Data</span>
+        <span class="skill-value">Node.js/Express, REST APIs, PostgreSQL, database normalization</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">AI &amp; ML</span>
+        <span class="skill-value">scikit-learn, XGBoost, Google Gemini API, OpenAI GPT-4, prompt design, multi-agent systems</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Cloud &amp; Tools</span>
+        <span class="skill-value">AWS (Lambda, API Gateway, Amplify), Git/GitHub, CI/CD, pytest, Vitest</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="experience-title">
+    <h2 class="section-title" id="experience-title">experience</h2>
+
+    <div class="exp-item">
+      <div class="exp-head">
+        <span>Robotics Teaching Assistant — NJIT</span>
+        <span class="exp-date">07/2024 – 08/2024</span>
+      </div>
+      <p class="exp-detail">Delivered labs and review sessions, and tutored students one on one through debugging and core concepts.</p>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-head">
+        <span>Computer Technician — Unique, New York, NY</span>
+        <span class="exp-date">03/2023 – 03/2024</span>
+      </div>
+      <p class="exp-detail">Diagnosed and resolved technical issues for clients, reducing downtime and earning consistently positive feedback.</p>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-head">
+        <span>Federal Work Study, Financial Aid — Hudson County Community College</span>
+        <span class="exp-date">10/2023 – 12/2023</span>
+      </div>
+      <p class="exp-detail">Supported call center operations and guided students through financial aid applications.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Roaa Elsayed</span>
+    <a href="mailto:relsayed2005@gmail.com">relsayed2005@gmail.com</a>
+  </footer>
+
+</div>
+</body>
+</html>
